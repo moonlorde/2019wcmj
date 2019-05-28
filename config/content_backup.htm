@@ -63,6 +63,140 @@ ctx.closePath()
 # 填色設為白色
 ctx.fillStyle = '#fff'
 ctx.fill()
+</script>
+<!-- 導入 Brython 標準程式庫 -->
+<script src="/static/brython.js"></script>
+<script src="/static/brython_stdlib.js"></script>
+<p></p>
+<!-- 啟動 Brython -->
+<script>
+window.onload=function(){
+// 設定 data/py 為共用程式路徑
+brython({debug:1, pythonpath:['./../data/py']});
+}
+</script>
+<p><canvas height="400" id="plotarea2" width="600"></canvas></p>
+<script type="text/python">
+# 導入 doc
+from browser import document as doc
+import math
+
+# 準備繪圖畫布
+canvas = doc["plotarea2"]
+ctx = canvas.getContext("2d")
+# 進行座標轉換, x 軸不變, y 軸反向且移動 canvas.height 單位光點
+# ctx.setTransform(1, 0, 0, -1, 0, canvas.height)
+# 以下採用 canvas 原始座標繪圖
+flag_w = canvas.width
+flag_h = canvas.height
+circle_x = flag_w/4
+circle_y = flag_h/4
+# 先畫滿地紅
+ctx.fillStyle='rgb(130, 0, 125)'
+ctx.fillRect(0,0,flag_w,flag_h)
+# 再畫青天
+ctx.fillStyle='rgb(20,100,30 )'
+ctx.fillRect(0,0,flag_w/2,flag_h/2)
+# 畫十二道光芒白日
+ctx.beginPath()
+star_radius = flag_w/8
+angle = 0
+for i in range(24):
+    angle += 5*math.pi*2/12
+    toX = circle_x + math.cos(angle)*star_radius
+    toY = circle_y + math.sin(angle)*star_radius
+    # 只有 i 為 0 時移動到 toX, toY, 其餘都進行 lineTo
+    if (i):
+        ctx.lineTo(toX, toY)
+    else:
+        ctx.moveTo(toX, toY)
+ctx.closePath()
+# 將填色設為白色
+ctx.fillStyle = '#fff'
+ctx.fill()
+# 白日:藍圈
+ctx.beginPath()
+ctx.arc(circle_x, circle_y, flag_w*17/240, 0, math.pi*2, True)
+ctx.closePath()
+# 填色設為藍色
+ctx.fillStyle = 'rgb(130, 0,19)'
+ctx.fill()
+# 白日:白心
+ctx.beginPath()
+ctx.arc(circle_x, circle_y, flag_w/16, 0, math.pi*2, True)
+ctx.closePath()
+# 填色設為白色
+ctx.fillStyle = '#fff'
+ctx.fill()
+</script>
+<h1>國旗</h1>
+<!-- 導入 Brython 標準程式庫 -->
+<script src="/static/brython.js"></script>
+<script src="/static/brython_stdlib.js"></script>
+<p></p>
+<!-- 啟動 Brython -->
+<script>
+window.onload=function(){
+// 設定 data/py 為共用程式路徑
+brython({debug:1, pythonpath:['./../data/py']});
+}
+</script>
+<p><canvas height="400" id="plotarea" width="600"></canvas></p>
+<script type="text/python">
+# 導入 doc
+from browser import document as doc
+import math
+
+# 準備繪圖畫布
+canvas = doc["plotarea"]
+ctx = canvas.getContext("2d")
+# 進行座標轉換, x 軸不變, y 軸反向且移動 canvas.height 單位光點
+# ctx.setTransform(1, 0, 0, -1, 0, canvas.height)
+# 以下採用 canvas 原始座標繪圖
+flag_w = canvas.width
+flag_h = canvas.height
+circle_x = flag_w/4
+circle_y = flag_h/4
+# 先畫滿地紅
+ctx.fillStyle='rgb(255, 0, 0)'
+ctx.fillRect(0,0,flag_w,flag_h)
+# 再畫青天
+ctx.fillStyle='rgb(0, 0, 150)'
+ctx.fillRect(0,0,flag_w/2,flag_h/2)
+# 畫十二道光芒白日
+ctx.beginPath()
+star_radius = flag_w/8
+angle = 0
+for i in range(24):
+let starofdavidframe = CGRect(x: 0, y: 0, width: 1000, height: 1000)
+let starofdavidview = UIView(frame: starofdavidframe)
+starofdavidview.backgroundColor = UIColor(red: 0, green: 56/255, blue: 184/255, alpha: 1)
+    angle += 5*math.pi*2/12
+    toX = circle_x + math.cos(angle)*star_radius
+    toY = circle_y + math.sin(angle)*star_radius
+    # 只有 i 為 0 時移動到 toX, toY, 其餘都進行 lineTo
+    if (i):
+        ctx.lineTo(toX, toY)
+    else:
+        ctx.moveTo(toX, toY)
+ctx.closePath()
+# 將填色設為白色
+ctx.fillStyle = '#fff'
+ctx.fill()
+# 白日:藍圈
+ctx.beginPath()
+ctx.arc(circle_x, circle_y, flag_w*17/240, 0, math.pi*2, True)
+ctx.closePath()
+# 填色設為藍色
+ctx.fillStyle = 'rgb(0, 0, 149)'
+ctx.fill()
+# 白日:白心
+ctx.beginPath()
+ctx.arc(circle_x, circle_y, flag_w/16, 0, math.pi*2, True)
+ctx.closePath()
+# 填色設為白色
+ctx.fillStyle = '#fff'
+ctx.fill()
 </script><h1>簡介</h1>
 <p>CMSimfly (<a href="https://github.com/chiamingyen/cmsimfly">https://github.com/chiamingyen/cmsimfly)</a> 是一套簡單的網際內容管理系統, 採用 Flask 網際框架, 以 Beautifulsoup 解讀分頁內容.123</p>
 <p><img alt="" height="471" src="/images/gocycle4.png" width="587"/></p><h1>目錄結構</h1>
@@ -499,20 +633,30 @@ COPY TO CLIPBOARD	</pre>
 <p> Markdown 原始檔案位於 markdown 目錄中, 而經 Pelican 轉換出的網誌超文件檔案則位於 blog 目錄中.</p>
 <p>其餘在網誌文章中所需要的 Javascript 或 Brython 程式檔案, 則與 CMSimfly 及 Reveal.js 共用, 位於 static 目錄下.</p>
 <p>上傳檔案與圖檔的引用則與 CMSimfly 架構相同.</p>
-<h1>已知錯誤</h1>
-<h4>全部頁面會因無法正確解讀而誤刪</h4>
-<p>在特定情況下, 系統會誤刪 config/content.htm 檔案, 目前在單頁或全部頁面編輯存檔之前, 或將上一版本的 content.htm 存入 content_back.htm, 若 content.htm 內容被程式誤刪, 可以利用備份檔案複製回原始內容後, 再進行後續處理.</p>
-<h4>頁面標題不支援特殊符號</h4>
-<p>各頁面標題目前不支援特殊符號, 例如: "/", "?" 等, 若已經發生程式無法解讀頁面的情況, 只能從編輯 config/content.htm 下手, 若系統位於遠端, 則後續必須要再設法提供一個額外的編輯 config/content.htm 檔案的網際連結功能.</p>
-<h4>Video 引用不支援內部引用</h4>
-<p>tinymce 中插入 video 的小視窗, 要移除引用的圖像與連結, 因為一般建議不要在內容中存入 .mp4 的影片資料, 而只接受引入影片 URL 連結.</p>
-<h1>產生亂數</h1>
+<h1>50733107期末報告</h1>
+<p>網路連線設定</p>
+<p><img alt="" height="1050" src="/images/chrome_fLRyAx7bJi.png" width="1680"/><img alt="" height="1050" src="/images/jPp3fJwQLX.png" width="1680"/><img alt="" height="1050" src="/images/LV26DBpxat.png" width="1680"/>倉儲.倉儲改版</p>
+<p><img alt="" height="1050" src="/images/chrome_PN5oXRRjMr.png" width="1680"/><img alt="" height="1050" src="/images/chrome_Jce005CQRO.png" width="1680"/></p>
+<p><img alt="" height="1050" src="/images/chrome_g83CQVUZck.png" width="1680"/></p>
+<p>mde.tw</p>
+<p><img alt="" height="1050" src="/images/chrome_HoPErbFv81.png" width="1680"/></p><h2>window network setting</h2>
+<p><img alt="" height="1050" src="/images/jPp3fJwQLX.png" width="1680"/></p>
+<p><img alt="" height="1050" src="/images/chrome_fLRyAx7bJi.png" width="1680"/></p>
+<h2>chrome proxy</h2>
+<p><img alt="" height="1050" src="/images/LV26DBpxat.png" width="1680"/></p>
+<h2>mde.tw</h2>
+<p><img alt="" height="1050" src="/images/chrome_HoPErbFv81.png" width="1680"/></p>
+<h2>github</h2>
+<p><img alt="" height="1050" src="/images/chrome_g83CQVUZck.png" width="1680"/></p>
+<h2>倉儲改版</h2>
+<p><img alt="" height="1050" src="/images/chrome_PN5oXRRjMr.png" width="1680"/></p>
+<p></p><h1>來起抽ㄅ</h1>
 <p></p>
 <p><button onclick="myFunction()">click</button></p>
 <p id="demo"></p>
-<script>// <![CDATA[
+<script>
 function myFunction() {
   document.getElementById("demo").innerHTML = Math.floor(Math.random()*50+1);
   //alert("123");
 }
-// ]]></script>
+</script>
